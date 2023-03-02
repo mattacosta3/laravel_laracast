@@ -1,0 +1,123 @@
+<?php
+
+namespace App\Models;
+use Illuminate\Database\Eloquent\ModelNotFoundException as ModelNotFoundException;
+use Illuminate\Support\Facades\File;
+use Spatie\YamlFrontMatter\YamlFrontMatter;
+
+class Post {
+
+    public $title;
+    public $excerpt;
+    public $date;
+    public $body;
+
+    public $slug;
+
+    public function __construct($title, $excerpt, $date, $body, $slug) {
+        $this->title = $title;
+        $this->excerpt = $excerpt;
+        $this->date = $date;
+        $this->body = $body;
+        $this->slug = $slug;
+    }
+
+    public static function all(){
+        return cache()->rememberforever('post.all', function() {
+            
+            return collect(File::files(resource_path("posts")))
+        ->map(fn($file) => YamlFrontMatter::parseFile($file))
+        ->map(fn($document) => new Post(
+                $document->title,
+                $document->excerpt,
+                $document->date,
+                $document->body(),
+                $document->slug
+        ))
+        ->sortbyDesc('date');
+        });
+}
+
+    // get all file directorys for the blog posts,   
+    // pass the files through yaml::parseFile,
+    // then pass them through a foreach/array_map/collections
+
+
+    // ** COLLECT ** 
+    //
+    // $posts = collect(File::files(resource_path("posts")))
+    //     ->map(fn($file) => YamlFrontMatter::parseFile($file))
+    //     ->map(fn($document) => new Post(
+    //             $document->title,
+    //             $document->excerpt,
+    //             $document->date,
+    //             $document->body(),
+    //             $document->slug
+    //     ));
+
+    //---------------------------------------------
+
+
+    // **ARRAY_MAP** How to accomplish the same thing (creating an array 
+    // and using a foreach to build it out) instead using array_map
+
+    // $files = File::files(resource_path("posts"));
+    // return array_map(function ($file) {
+    //     $document = ;
+
+    //     return new Post(
+    //             $document->title,
+    //             $document->excerpt,
+    //             $document->date,
+    //             $document->body(),
+    //             $document->slug
+    //     );
+    // }
+    //     , $files);
+
+    //---------------------------------------------
+
+    // **FOREACH** same thing as above but using foreach and saving it to an array
+
+    // $posts = [];
+    // foreach ($files as $file) {
+    //     $document = YamlFrontMatter::parseFile($file);
+
+    //     $posts[] = new Post (
+    //         $document -> title,
+    //         $document -> excerpt,
+    //         $document -> date,
+    //         $document -> body(),
+    //         $document -> slug
+    //     );
+    // }
+    // }
+
+    public static function find($slug)
+    {
+
+        $posts = static::all();
+
+        return $posts->firstWhere('slug', $slug);
+    }
+
+    public static function findOrfail($slug){
+
+        $posts = static::find($slug);
+
+        if (! $posts) {
+            throw new ModelNotFoundException();
+        } else
+            return $posts;
+
+
+    // if (! file_exists($path = resource_path("posts/{$slug}.html"))){
+    //     throw new ModelNotFoundException();
+    // }; 
+
+    // return cache()->remember("posts.{$slug}", 5, function () use ($path) {
+    //     return file_get_contents($path);
+    // });
+
+    }
+}
