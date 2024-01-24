@@ -13,7 +13,6 @@ class CategoryDropdown extends Component
         return view('components.category-dropdown', [
             'category' => Category::all(),
             'currentCategory' => Category::firstWhere('slug', request('category'))
-
         ]);
     }
 }

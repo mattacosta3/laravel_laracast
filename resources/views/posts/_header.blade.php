@@ -3,7 +3,7 @@
                 Latest <span class="text-blue-500">Laravel From Scratch</span> News
             </h1>
 
-            
+
             <div class="space-y-2 lg:space-y-0 lg:space-x-4 mt-6">
                 <!--  Category -->
                 <div class="relative lg:inline-flex bg-gray-100 rounded-xl">
@@ -38,9 +38,9 @@
                         @if (request('category'))
                             <input type="hidden" name="category" value="{{ request('category') }}">
                         @endif
-                        
-                        <input type="text" 
-                        name="search" 
+
+                        <input type="text"
+                        name="search"
                         placeholder="Find something"
                         value="{{ request('search') }}"
                                class="bg-transparent placeholder-black font-semibold text-sm">
