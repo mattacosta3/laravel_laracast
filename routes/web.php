@@ -36,7 +36,7 @@ Route::get('/templates', function () {
     return view('tailwindtemplates');
 });
 
-Route::post('/newsletter', NewsletterController::class);
+Route::post('newsletter', NewsletterController::class);
 
 Route::get('/', [PostController::class, 'index'])->name('home');
 
