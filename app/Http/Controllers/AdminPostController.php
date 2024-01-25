@@ -24,7 +24,7 @@ class AdminPostController extends Controller
     {
         Post::create(array_merge($this->validatePost(), [
             'user_id' => auth()->id(),
-            'thumbnail' => request()->file('thumbnail')->store('thumbnails')
+            'thumbnail' => request()->file('thumbnail')->storePublicly('thumbnails')
         ]));
 
         return redirect('/');
