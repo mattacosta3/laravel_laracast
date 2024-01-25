@@ -1,6 +1,29 @@
 <!doctype html>
 
-<title>Laravel From Scratch Blog</title>
+<title>Homepage</title>
+
+<meta property="og:title" content="Web Developer" />
+
+<meta property="og:locale" content="en_US" />
+<meta
+    property="og:url"
+    content="https://mattaco.blog/"
+  />
+
+  <meta
+    name="description"
+    content="Matthew Acosta's Blog"
+  />
+
+  <link rel="icon" type="image/png" href="/images/matco_logo.png" />
+
+  <meta name="theme-color" content="#5540af" />
+
+  <meta property="og:site_name" content="Matthew Acosta's Blog"/>
+
+  <meta property="og:image" content="https://mattaco.blog/images/matco_logo.png" />
+  <meta property="og:image:type" content="image/png" />
+
 <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">

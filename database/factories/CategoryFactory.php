@@ -21,7 +21,7 @@ class CategoryFactory extends Factory
 
         return [
             'name' => $name,
-            'slug' => $name . fake()->slug()
+            'slug' => fake()->slug()
         ];
     }
 }
