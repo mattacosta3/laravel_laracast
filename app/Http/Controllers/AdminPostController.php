@@ -24,7 +24,7 @@ class AdminPostController extends Controller
     {
         Post::create(array_merge($this->validatePost(), [
             'user_id' => auth()->id(),
-            'thumbnail' => request()->file('thumbnail')->storePublicly('thumbnails')
+            'thumbnail' => request()->file('thumbnail')->store('thumbnails', 'public')
         ]));
 
         return redirect('/');
@@ -40,7 +40,7 @@ class AdminPostController extends Controller
         $attributes = $this->validatePost($post);
 
         if (($attributes['thumbnail']) ?? false) {
-            $attributes['thumbnail'] = request()->file('thumbnail')->storePublicly('thumbnails');
+            $attributes['thumbnail'] = request()->file('thumbnail')->store('thumbnails', 'public');
         }
 
         $post->update($attributes);
