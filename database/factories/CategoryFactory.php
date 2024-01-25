@@ -16,9 +16,12 @@ class CategoryFactory extends Factory
      */
     public function definition()
     {
+        $name = fake()->randomElement(['Code','Development','Career','Skills','Productivity','Focus',
+        'CodingTips','Programming','Projects','Tools','Frameworks','RemoteWork','Freelance','Learning','Efficiency']);
+
         return [
-            'name' => fake()->word(),
-            'slug' => fake()->slug()
+            'name' => $name,
+            'slug' => $name . fake()->slug()
         ];
     }
 }

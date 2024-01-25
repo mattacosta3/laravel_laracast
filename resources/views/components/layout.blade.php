@@ -14,11 +14,11 @@
 
 
 <body style="font-family: Open Sans, sans-serif">
-    <section class="px-6 py-8">
+    <section class="px-6 py-4">
         <nav class="md:flex md:justify-between md:items-center">
-            <div>
+            <div class="-px-6 -ml-4">
                 <a href="/">
-                    <img src="/images/logo.svg" alt="Laracasts Logo" width="165" height="16">
+                    <img src="/images/matco_logo.png" alt="Matco Logo" width="200" height="16">
                 </a>
             </div>
 
@@ -71,7 +71,7 @@
                     </a>
                 @endauth
 
-                <a href="#newsletter" class="bg-blue-500 ml-3 rounded-full text-xs font-semibold text-white uppercase py-3 px-5">
+                <a href="#newsletter" class="bg-yellow-500 ml-3 rounded-full text-xs font-semibold text-white uppercase py-3 px-5">
                     Subscribe for Updates
                 </a>
             </div>
@@ -110,7 +110,7 @@
                         </div>
 
                         <button type="submit"
-                                class="transition-colors duration-300 bg-blue-500 hover:bg-blue-600 mt-4 lg:mt-0 lg:ml-3 rounded-full text-xs font-semibold text-white uppercase py-3 px-8"
+                                class="transition-colors duration-300 bg-yellow-500 hover:bg-blue-600 mt-4 lg:mt-0 lg:ml-3 rounded-full text-xs font-semibold text-white uppercase py-3 px-8"
                         >
                             Subscribe
                         </button>
